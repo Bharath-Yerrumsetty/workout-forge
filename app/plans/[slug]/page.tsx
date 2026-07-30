@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import type { ReactNode } from 'react';
 
 import { Reveal } from '@/components/motion/reveal';
 import { DayBlock } from '@/components/plan/day-block';
 import {
+  ExtraSectionList,
   VarietyFramework,
   VolumeTargets,
 } from '@/components/plan/reference-tables';
@@ -32,10 +34,7 @@ export async function generateMetadata({
     return { title: 'Plan not found' };
   }
 
-  return {
-    title: plan.title,
-    description: plan.subtitle,
-  };
+  return { title: plan.title, description: plan.subtitle };
 }
 
 export default async function PlanPage({ params }: PageProps) {
@@ -47,6 +46,113 @@ export default async function PlanPage({ params }: PageProps) {
   }
 
   const stats = planStats(plan);
+  const detailedDays = plan.days.map((day) => day.day);
+
+  /**
+   * Sections are assembled rather than hardcoded, because plans differ in which
+   * ones they carry. Ordinals are assigned from what actually renders, so the
+   * numbering never skips.
+   */
+  const sections: { id: string; title: string; body: ReactNode }[] = [
+    {
+      id: 'weekly-structure',
+      title: 'Weekly structure',
+      body: (
+        <>
+          <Reveal>
+            <WeeklyStructure
+              rows={plan.weeklyStructure}
+              hardDays={plan.hardDays}
+              hardDayLabel={plan.hardDayLabel}
+              linkedDays={detailedDays}
+            />
+          </Reveal>
+          {plan.scheduleNotes.length > 0 ? (
+            <ul className="mt-[var(--space-block)] flex flex-col gap-2">
+              {plan.scheduleNotes.map((note) => (
+                <li
+                  key={note}
+                  className="max-w-[var(--measure)] text-[length:var(--text-micro)] text-[var(--text-dim)]"
+                >
+                  {note}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </>
+      ),
+    },
+  ];
+
+  if (plan.programmingRules.length > 0) {
+    sections.push({
+      id: 'programming-rules',
+      title: 'Programming rules',
+      body: <RuleList rules={plan.programmingRules} />,
+    });
+  }
+
+  sections.push({
+    id: 'daily-plan',
+    title: 'Daily training',
+    body: (
+      <>
+        {plan.days.map((day, index) => (
+          <DayBlock
+            key={day.day}
+            day={day}
+            index={index}
+            isHard={plan.hardDays.includes(day.day)}
+            hardDayLabel={plan.hardDayLabel}
+          />
+        ))}
+      </>
+    ),
+  });
+
+  if (plan.volumeTargets.length > 0) {
+    sections.push({
+      id: 'volume-targets',
+      title: 'Weekly volume',
+      body: (
+        <Reveal>
+          <VolumeTargets targets={plan.volumeTargets} />
+        </Reveal>
+      ),
+    });
+  }
+
+  if (plan.varietyFramework) {
+    const framework = plan.varietyFramework;
+    sections.push({
+      id: 'variety-framework',
+      title: 'Exercise variety',
+      body: (
+        <>
+          <p className="mb-[var(--space-block)] max-w-[var(--measure)] text-[var(--text-dim)]">
+            {framework.note}
+          </p>
+          <VarietyFramework patterns={framework.patterns} />
+        </>
+      ),
+    });
+  }
+
+  if (plan.progressionRules.length > 0) {
+    sections.push({
+      id: 'progression',
+      title: 'Progression & recovery',
+      body: <RuleList rules={plan.progressionRules} />,
+    });
+  }
+
+  for (const extra of plan.extraSections) {
+    sections.push({
+      id: `section-${extra.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+      title: extra.title,
+      body: <ExtraSectionList section={extra} />,
+    });
+  }
 
   return (
     <article>
@@ -66,10 +172,12 @@ export default async function PlanPage({ params }: PageProps) {
             {plan.subtitle}
           </p>
 
-          <p className="mt-[var(--space-tight)] max-w-[var(--measure)] md:col-span-8 md:col-start-5 md:mt-0">
-            <span className="label text-[var(--text-dim)]">Goal — </span>
-            {plan.goal}
-          </p>
+          {plan.goal ? (
+            <p className="mt-[var(--space-tight)] max-w-[var(--measure)] md:col-span-8 md:col-start-5 md:mt-0">
+              <span className="label text-[var(--text-dim)]">Goal — </span>
+              {plan.goal}
+            </p>
+          ) : null}
         </div>
 
         <dl className="mt-[var(--space-day)] flex flex-wrap gap-x-12 gap-y-6">
@@ -79,12 +187,16 @@ export default async function PlanPage({ params }: PageProps) {
               {stats.trainingDays}
             </dd>
           </div>
-          <div>
-            <dt className="label text-[var(--text-dim)]">Hard days</dt>
-            <dd className="mt-[var(--space-hair)] text-[length:var(--text-day)] tabular-nums leading-none text-[var(--accent-text)]">
-              {stats.hardDays}
-            </dd>
-          </div>
+          {stats.hardDays > 0 ? (
+            <div>
+              <dt className="label text-[var(--text-dim)]">
+                {plan.hardDayLabel} days
+              </dt>
+              <dd className="mt-[var(--space-hair)] text-[length:var(--text-day)] tabular-nums leading-none text-[var(--accent-text)]">
+                {stats.hardDays}
+              </dd>
+            </div>
+          ) : null}
           <div>
             <dt className="label text-[var(--text-dim)]">Movements</dt>
             <dd className="mt-[var(--space-hair)] text-[length:var(--text-day)] tabular-nums leading-none">
@@ -94,99 +206,34 @@ export default async function PlanPage({ params }: PageProps) {
         </dl>
       </header>
 
-      <section
-        aria-labelledby="weekly-structure"
-        className="gutter py-[var(--space-day)]"
-      >
-        <SectionHeading
-          ordinal="01"
-          id="weekly-structure"
-          title="Weekly structure"
-        />
-        <Reveal>
-          <WeeklyStructure rows={plan.weeklyStructure} hardDays={plan.hardDays} />
-        </Reveal>
-      </section>
-
-      <section
-        aria-labelledby="programming-rules"
-        className="gutter pb-[var(--space-day)]"
-      >
-        <SectionHeading
-          ordinal="02"
-          id="programming-rules"
-          title="Programming rules"
-        />
-        <RuleList rules={plan.programmingRules} />
-      </section>
-
-      <section
-        aria-labelledby="daily-plan"
-        className="gutter pb-[var(--space-day)]"
-      >
-        <SectionHeading ordinal="03" id="daily-plan" title="Daily training" />
-        {plan.days.map((day, index) => (
-          <DayBlock
-            key={day.day}
-            day={day}
-            index={index}
-            isHard={plan.hardDays.includes(day.day)}
+      {sections.map((section, index) => (
+        <section
+          key={section.id}
+          aria-labelledby={section.id}
+          className="gutter pb-[var(--space-day)] first-of-type:pt-[var(--space-day)]"
+        >
+          <SectionHeading
+            ordinal={String(index + 1).padStart(2, '0')}
+            id={section.id}
+            title={section.title}
           />
-        ))}
-      </section>
+          {section.body}
+        </section>
+      ))}
 
-      <section
-        aria-labelledby="volume-targets"
-        className="gutter pb-[var(--space-day)]"
-      >
-        <SectionHeading
-          ordinal="04"
-          id="volume-targets"
-          title="Weekly volume"
-        />
-        <Reveal>
-          <VolumeTargets targets={plan.volumeTargets} />
-        </Reveal>
-      </section>
-
-      <section
-        aria-labelledby="variety-framework"
-        className="gutter pb-[var(--space-day)]"
-      >
-        <SectionHeading
-          ordinal="05"
-          id="variety-framework"
-          title="Exercise variety"
-        />
-        <p className="mb-[var(--space-block)] max-w-[var(--measure)] text-[var(--text-dim)]">
-          {plan.varietyFramework.note}
-        </p>
-        <VarietyFramework patterns={plan.varietyFramework.patterns} />
-      </section>
-
-      <section
-        aria-labelledby="progression"
-        className="gutter pb-[var(--space-day)]"
-      >
-        <SectionHeading
-          ordinal="06"
-          id="progression"
-          title="Progression & recovery"
-        />
-        <RuleList rules={plan.progressionRules} />
-      </section>
-
-      <section
-        aria-labelledby="intent"
-        className="gutter border-t-[length:var(--rule-slab)] border-[var(--accent)] py-[var(--space-day)]"
-      >
-        <h2 id="intent" className="label text-[var(--text-dim)]">
-          Plan intent
-        </h2>
-        <p className="mt-[var(--space-block)] max-w-[24ch] text-[length:var(--text-plan-title)] font-[family-name:var(--font-display)] uppercase leading-[0.92] tracking-[var(--tracking-brutal)]">
-          {plan.intent}
-        </p>
-      </section>
+      {plan.intent ? (
+        <section
+          aria-labelledby="intent"
+          className="gutter border-t-[length:var(--rule-slab)] border-[var(--accent)] py-[var(--space-day)]"
+        >
+          <h2 id="intent" className="label text-[var(--text-dim)]">
+            Plan intent
+          </h2>
+          <p className="mt-[var(--space-block)] max-w-[24ch] text-[length:var(--text-plan-title)] font-[family-name:var(--font-display)] uppercase leading-[0.92] tracking-[var(--tracking-brutal)]">
+            {plan.intent}
+          </p>
+        </section>
+      ) : null}
     </article>
   );
 }

@@ -3,51 +3,134 @@
   "title": "Hybrid Athlete",
   "subtitle": "6-Day Strength, Hypertrophy & Conditioning Plan",
   "goal": "train every major muscle group twice weekly while developing aerobic fitness, agility, power, core strength and full-body work capacity.",
-  "hardDays": ["Monday", "Friday", "Saturday"],
+  "hardDays": [
+    "Monday",
+    "Friday",
+    "Saturday"
+  ],
+  "hardDayLabel": "Hard",
   "weeklyStructure": [
     {
       "day": "Monday",
-      "muscleGroups": "Chest + Back",
-      "conditioning": "Short power intervals",
-      "primaryGoal": "Upper-body strength"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Chest + Back"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Short power intervals"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Upper-body strength"
+        }
+      ]
     },
     {
       "day": "Tuesday",
-      "muscleGroups": "Quads + Hamstrings",
-      "conditioning": "Carries + sled work",
-      "primaryGoal": "Lower-body strength"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Quads + Hamstrings"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Carries + sled work"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Lower-body strength"
+        }
+      ]
     },
     {
       "day": "Wednesday",
-      "muscleGroups": "Shoulders + Arms",
-      "conditioning": "Zone 2",
-      "primaryGoal": "Hypertrophy + aerobic base"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Shoulders + Arms"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Zone 2"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Hypertrophy + aerobic base"
+        }
+      ]
     },
     {
       "day": "Thursday",
-      "muscleGroups": "Chest + Back",
-      "conditioning": "Sprints, sled pushes + battle ropes",
-      "primaryGoal": "Hypertrophy + speed/agility"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Chest + Back"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Sprints, sled pushes + battle ropes"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Hypertrophy + speed/agility"
+        }
+      ]
     },
     {
       "day": "Friday",
-      "muscleGroups": "Quads + Hamstrings",
-      "conditioning": "Threshold intervals",
-      "primaryGoal": "Hypertrophy + repeat effort"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Quads + Hamstrings"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Threshold intervals"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Hypertrophy + repeat effort"
+        }
+      ]
     },
     {
       "day": "Saturday",
-      "muscleGroups": "Shoulders + Arms",
-      "conditioning": "Hybrid circuit + core",
-      "primaryGoal": "Work capacity"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Shoulders + Arms"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Hybrid circuit + core"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Work capacity"
+        }
+      ]
     },
     {
       "day": "Sunday",
-      "muscleGroups": "Recovery",
-      "conditioning": "Easy walking/mobility",
-      "primaryGoal": "Adaptation"
+      "cells": [
+        {
+          "label": "Muscle groups",
+          "value": "Recovery"
+        },
+        {
+          "label": "Conditioning",
+          "value": "Easy walking/mobility"
+        },
+        {
+          "label": "Primary goal",
+          "value": "Adaptation"
+        }
+      ]
     }
   ],
+  "scheduleNotes": [],
   "programmingRules": [
     "Keep only three conditioning days genuinely hard: Monday, Friday and Saturday.",
     "Wednesday Zone 2 and Thursday agility are technical or aerobic sessions, not exhaustion tests.",
@@ -66,7 +149,10 @@
         {
           "label": "Power preparation",
           "exercises": [
-            { "name": "Medicine-ball chest throw", "prescription": "4 × 5" },
+            {
+              "name": "Medicine-ball chest throw",
+              "prescription": "4 × 5"
+            },
             {
               "name": "Explosive or assisted speed pull-up",
               "prescription": "3 × 3–5"
@@ -76,12 +162,30 @@
         {
           "label": "Strength and hypertrophy",
           "exercises": [
-            { "name": "Barbell bench press", "prescription": "4 × 4–6" },
-            { "name": "Weighted pull-up", "prescription": "4 × 4–6" },
-            { "name": "Incline dumbbell press", "prescription": "3 × 8" },
-            { "name": "Chest-supported row", "prescription": "3 × 8" },
-            { "name": "Cable fly", "prescription": "2 × 12–15" },
-            { "name": "Straight-arm pulldown", "prescription": "2 × 12–15" }
+            {
+              "name": "Barbell bench press",
+              "prescription": "4 × 4–6"
+            },
+            {
+              "name": "Weighted pull-up",
+              "prescription": "4 × 4–6"
+            },
+            {
+              "name": "Incline dumbbell press",
+              "prescription": "3 × 8"
+            },
+            {
+              "name": "Chest-supported row",
+              "prescription": "3 × 8"
+            },
+            {
+              "name": "Cable fly",
+              "prescription": "2 × 12–15"
+            },
+            {
+              "name": "Straight-arm pulldown",
+              "prescription": "2 × 12–15"
+            }
           ]
         },
         {
@@ -93,7 +197,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Tuesday",
@@ -104,21 +209,39 @@
         {
           "label": "Athletic preparation",
           "exercises": [
-            { "name": "Box jump", "prescription": "4 × 3" },
-            { "name": "Pogo jumps", "prescription": "3 × 15" }
+            {
+              "name": "Box jump",
+              "prescription": "4 × 3"
+            },
+            {
+              "name": "Pogo jumps",
+              "prescription": "3 × 15"
+            }
           ]
         },
         {
           "label": "Strength",
           "exercises": [
-            { "name": "Trap-bar deadlift", "prescription": "3 × 3–5" },
+            {
+              "name": "Trap-bar deadlift",
+              "prescription": "3 × 3–5"
+            },
             {
               "name": "Front squat or safety-bar squat",
               "prescription": "3 × 5–6"
             },
-            { "name": "Bulgarian split squat", "prescription": "3 × 8 per leg" },
-            { "name": "Seated or lying leg curl", "prescription": "3 × 10–12" },
-            { "name": "Calf raise", "prescription": "3 × 12–15" }
+            {
+              "name": "Bulgarian split squat",
+              "prescription": "3 × 8 per leg"
+            },
+            {
+              "name": "Seated or lying leg curl",
+              "prescription": "3 × 10–12"
+            },
+            {
+              "name": "Calf raise",
+              "prescription": "3 × 12–15"
+            }
           ]
         },
         {
@@ -130,7 +253,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Wednesday",
@@ -141,22 +265,43 @@
         {
           "label": null,
           "exercises": [
-            { "name": "Landmine press", "prescription": "3 × 8–10 per side" },
-            { "name": "Cable lateral raise", "prescription": "3 × 12–15" },
-            { "name": "Reverse pec deck", "prescription": "3 × 12–15" },
-            { "name": "Incline dumbbell curl", "prescription": "3 × 8–12" },
-            { "name": "Hammer curl", "prescription": "3 × 10–12" },
+            {
+              "name": "Landmine press",
+              "prescription": "3 × 8–10 per side"
+            },
+            {
+              "name": "Cable lateral raise",
+              "prescription": "3 × 12–15"
+            },
+            {
+              "name": "Reverse pec deck",
+              "prescription": "3 × 12–15"
+            },
+            {
+              "name": "Incline dumbbell curl",
+              "prescription": "3 × 8–12"
+            },
+            {
+              "name": "Hammer curl",
+              "prescription": "3 × 10–12"
+            },
             {
               "name": "Overhead cable triceps extension",
               "prescription": "3 × 10–12"
             },
-            { "name": "Rope pressdown", "prescription": "3 × 12–15" }
+            {
+              "name": "Rope pressdown",
+              "prescription": "3 × 12–15"
+            }
           ]
         },
         {
           "label": "Conditioning",
           "exercises": [
-            { "name": "Zone 2 cardio", "prescription": "35–50 minutes" },
+            {
+              "name": "Zone 2 cardio",
+              "prescription": "35–50 minutes"
+            },
             {
               "name": "Choose one: incline treadmill, easy run, bike, rower or elliptical",
               "prescription": null
@@ -167,7 +312,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Thursday",
@@ -178,7 +324,10 @@
         {
           "label": "Agility first",
           "exercises": [
-            { "name": "A-skips", "prescription": "2 × 20 m" },
+            {
+              "name": "A-skips",
+              "prescription": "2 × 20 m"
+            },
             {
               "name": "Build-up runs",
               "prescription": "3 × 30 m at gradually increasing speed"
@@ -196,15 +345,30 @@
         {
           "label": "Hypertrophy",
           "exercises": [
-            { "name": "Incline dumbbell press", "prescription": "3 × 8–12" },
-            { "name": "Neutral-grip pulldown", "prescription": "3 × 8–12" },
+            {
+              "name": "Incline dumbbell press",
+              "prescription": "3 × 8–12"
+            },
+            {
+              "name": "Neutral-grip pulldown",
+              "prescription": "3 × 8–12"
+            },
             {
               "name": "Weighted dips or machine press",
               "prescription": "3 × 8–12"
             },
-            { "name": "Single-arm cable row", "prescription": "3 × 10–12" },
-            { "name": "Pec deck", "prescription": "2 × 12–15" },
-            { "name": "Face pull", "prescription": "2 × 15–20" }
+            {
+              "name": "Single-arm cable row",
+              "prescription": "3 × 10–12"
+            },
+            {
+              "name": "Pec deck",
+              "prescription": "2 × 12–15"
+            },
+            {
+              "name": "Face pull",
+              "prescription": "2 × 15–20"
+            }
           ]
         },
         {
@@ -220,7 +384,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Friday",
@@ -231,32 +396,60 @@
         {
           "label": "Power",
           "exercises": [
-            { "name": "Kettlebell swing", "prescription": "4 × 8–10" }
+            {
+              "name": "Kettlebell swing",
+              "prescription": "4 × 8–10"
+            }
           ]
         },
         {
           "label": "Hypertrophy",
           "exercises": [
-            { "name": "Hack squat or leg press", "prescription": "3 × 8–12" },
-            { "name": "Romanian deadlift", "prescription": "3 × 8–10" },
-            { "name": "Reverse lunge", "prescription": "3 × 8–10 per leg" },
-            { "name": "Leg extension", "prescription": "2–3 × 12–15" },
-            { "name": "Leg curl", "prescription": "2–3 × 12–15" },
-            { "name": "Calf raise", "prescription": "3 × 12–15" }
+            {
+              "name": "Hack squat or leg press",
+              "prescription": "3 × 8–12"
+            },
+            {
+              "name": "Romanian deadlift",
+              "prescription": "3 × 8–10"
+            },
+            {
+              "name": "Reverse lunge",
+              "prescription": "3 × 8–10 per leg"
+            },
+            {
+              "name": "Leg extension",
+              "prescription": "2–3 × 12–15"
+            },
+            {
+              "name": "Leg curl",
+              "prescription": "2–3 × 12–15"
+            },
+            {
+              "name": "Calf raise",
+              "prescription": "3 × 12–15"
+            }
           ]
         },
         {
           "label": "Conditioning — choose one",
           "exercises": [
-            { "name": "Rower", "prescription": "6 × 500 m, rest 90–120 seconds" },
-            { "name": "Bike", "prescription": "6 × 2 minutes hard, 2 minutes easy" },
+            {
+              "name": "Rower",
+              "prescription": "6 × 500 m, rest 90–120 seconds"
+            },
+            {
+              "name": "Bike",
+              "prescription": "6 × 2 minutes hard, 2 minutes easy"
+            },
             {
               "name": "Treadmill",
               "prescription": "6 × 1 minute fast, 90 seconds walking"
             }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Saturday",
@@ -271,11 +464,26 @@
               "name": "Push press",
               "prescription": "4 × 3–5; use landmine press if the lower back is not fully comfortable"
             },
-            { "name": "Cable lateral raise", "prescription": "3 × 12–15" },
-            { "name": "Rear-delt row", "prescription": "3 × 12" },
-            { "name": "Preacher curl", "prescription": "3 × 10–12" },
-            { "name": "Cable curl", "prescription": "2 × 12–15" },
-            { "name": "Dumbbell skullcrusher", "prescription": "3 × 10–12" },
+            {
+              "name": "Cable lateral raise",
+              "prescription": "3 × 12–15"
+            },
+            {
+              "name": "Rear-delt row",
+              "prescription": "3 × 12"
+            },
+            {
+              "name": "Preacher curl",
+              "prescription": "3 × 10–12"
+            },
+            {
+              "name": "Cable curl",
+              "prescription": "2 × 12–15"
+            },
+            {
+              "name": "Dumbbell skullcrusher",
+              "prescription": "3 × 10–12"
+            },
             {
               "name": "Cross-body cable triceps extension",
               "prescription": "2 × 12–15"
@@ -285,23 +493,51 @@
         {
           "label": "Hybrid circuit — 4 to 5 rounds",
           "exercises": [
-            { "name": "Sled push", "prescription": "20 m" },
-            { "name": "Farmer carry", "prescription": "30 m" },
-            { "name": "Rower", "prescription": "250 m" },
-            { "name": "Kettlebell clean or swing", "prescription": "10 reps" },
-            { "name": "Bear crawl", "prescription": "15–20 m" },
-            { "name": "Rest", "prescription": "90 seconds" }
+            {
+              "name": "Sled push",
+              "prescription": "20 m"
+            },
+            {
+              "name": "Farmer carry",
+              "prescription": "30 m"
+            },
+            {
+              "name": "Rower",
+              "prescription": "250 m"
+            },
+            {
+              "name": "Kettlebell clean or swing",
+              "prescription": "10 reps"
+            },
+            {
+              "name": "Bear crawl",
+              "prescription": "15–20 m"
+            },
+            {
+              "name": "Rest",
+              "prescription": "90 seconds"
+            }
           ]
         },
         {
           "label": "Core",
           "exercises": [
-            { "name": "Pallof press", "prescription": "3 × 10 per side" },
-            { "name": "Ab-wheel rollout", "prescription": "3 × 6–12" },
-            { "name": "Suitcase carry", "prescription": "3 × 30 m per side" }
+            {
+              "name": "Pallof press",
+              "prescription": "3 × 10 per side"
+            },
+            {
+              "name": "Ab-wheel rollout",
+              "prescription": "3 × 6–12"
+            },
+            {
+              "name": "Suitcase carry",
+              "prescription": "3 × 30 m per side"
+            }
           ]
         }
-      ]
+      ],
+      "summary": null
     },
     {
       "day": "Sunday",
@@ -312,26 +548,57 @@
         {
           "label": null,
           "exercises": [
-            { "name": "Easy walk", "prescription": "20–40 minutes" },
+            {
+              "name": "Easy walk",
+              "prescription": "20–40 minutes"
+            },
             {
               "name": "Hip, ankle and thoracic mobility",
               "prescription": null
             },
-            { "name": "Optional very easy cycling", "prescription": null },
-            { "name": "No hard conditioning or lifting", "prescription": null }
+            {
+              "name": "Optional very easy cycling",
+              "prescription": null
+            },
+            {
+              "name": "No hard conditioning or lifting",
+              "prescription": null
+            }
           ]
         }
-      ]
+      ],
+      "summary": null
     }
   ],
   "volumeTargets": [
-    { "muscleGroup": "Chest", "weeklySets": "14–18" },
-    { "muscleGroup": "Back", "weeklySets": "14–18" },
-    { "muscleGroup": "Quads", "weeklySets": "12–16" },
-    { "muscleGroup": "Hamstrings and glutes", "weeklySets": "10–14" },
-    { "muscleGroup": "Shoulders", "weeklySets": "12–16" },
-    { "muscleGroup": "Biceps", "weeklySets": "10–14" },
-    { "muscleGroup": "Triceps", "weeklySets": "10–14" }
+    {
+      "muscleGroup": "Chest",
+      "weeklySets": "14–18"
+    },
+    {
+      "muscleGroup": "Back",
+      "weeklySets": "14–18"
+    },
+    {
+      "muscleGroup": "Quads",
+      "weeklySets": "12–16"
+    },
+    {
+      "muscleGroup": "Hamstrings and glutes",
+      "weeklySets": "10–14"
+    },
+    {
+      "muscleGroup": "Shoulders",
+      "weeklySets": "12–16"
+    },
+    {
+      "muscleGroup": "Biceps",
+      "weeklySets": "10–14"
+    },
+    {
+      "muscleGroup": "Triceps",
+      "weeklySets": "10–14"
+    }
   ],
   "varietyFramework": {
     "note": "Keep the movement pattern; rotate the variation. This prevents boredom while preserving measurable progression.",
@@ -370,5 +637,6 @@
     "Every fourth or fifth week, reduce lifting sets by roughly 30–40% and keep conditioning easy.",
     "Stop or regress jumping, sprinting or hinge work if lower-back pain returns."
   ],
+  "extraSections": [],
   "intent": "build strength, muscle, aerobic capacity, agility and resilient full-body conditioning without making every session maximal."
 }

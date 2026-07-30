@@ -7,10 +7,20 @@
  *   PORT=3210 pnpm start   →   BASE_URL=http://localhost:3210 node scripts/check-ui.mjs
  */
 
+import { readdirSync } from 'node:fs';
+import path from 'node:path';
+
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE_URL ?? 'http://localhost:3210';
-const PAGES = ['/', '/plans/hybrid-athlete'];
+
+/** Derived from committed content so a new plan is covered automatically. */
+const PLAN_PATHS = readdirSync(path.join(process.cwd(), 'content', 'plans'))
+  .filter((file) => file.endsWith('.json'))
+  .map((file) => `/plans/${path.basename(file, '.json')}`);
+
+const PAGES = ['/', ...PLAN_PATHS];
+const DEEPEST_PLAN = PLAN_PATHS.at(-1) ?? '/';
 const WIDTHS = [320, 375, 768, 1024, 1440, 1920];
 
 const failures = [];
@@ -24,10 +34,10 @@ log('Horizontal overflow (document scrollWidth vs viewport)\n');
 const context = await browser.newContext();
 const page = await context.newPage();
 
-for (const path of PAGES) {
+for (const pagePath of PAGES) {
   for (const width of WIDTHS) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto(`${BASE}${path}`, { waitUntil: 'networkidle' });
+    await page.goto(`${BASE}${pagePath}`, { waitUntil: 'networkidle' });
 
     const { scrollWidth, clientWidth, offenders } = await page.evaluate(() => {
       const doc = document.documentElement;
@@ -54,12 +64,12 @@ for (const path of PAGES) {
     const overflow = scrollWidth - clientWidth;
     const pass = overflow <= 1;
     log(
-      `  ${pass ? 'PASS' : 'FAIL'}  ${String(width).padStart(4)}px  ${path.padEnd(24)} scrollWidth=${scrollWidth} clientWidth=${clientWidth}`,
+      `  ${pass ? "PASS" : "FAIL"}  ${String(width).padStart(4)}px  ${pagePath.padEnd(26)} scrollWidth=${scrollWidth} clientWidth=${clientWidth}`,
     );
 
     if (!pass) {
       failures.push(
-        `${path} overflows by ${overflow}px at ${width}px — ${offenders.join('; ') || 'no single offender identified'}`,
+        `${pagePath} overflows by ${overflow}px at ${width}px — ${offenders.join('; ') || 'no single offender identified'}`,
       );
     }
   }
@@ -74,7 +84,7 @@ async function hiddenElementCount(reducedMotion) {
   const ctx = await browser.newContext({ reducedMotion });
   const p = await ctx.newPage();
   await p.setViewportSize({ width: 1440, height: 900 });
-  await p.goto(`${BASE}/plans/hybrid-athlete`, { waitUntil: 'networkidle' });
+  await p.goto(`${BASE}${DEEPEST_PLAN}`, { waitUntil: 'networkidle' });
 
   const count = await p.evaluate(() => {
     let hidden = 0;
@@ -119,7 +129,7 @@ log('\nKeyboard focus\n');
 const kbCtx = await browser.newContext();
 const kbPage = await kbCtx.newPage();
 await kbPage.setViewportSize({ width: 1440, height: 900 });
-await kbPage.goto(`${BASE}/plans/hybrid-athlete`, { waitUntil: 'networkidle' });
+await kbPage.goto(`${BASE}${DEEPEST_PLAN}`, { waitUntil: 'networkidle' });
 
 let checked = 0;
 let invisible = 0;

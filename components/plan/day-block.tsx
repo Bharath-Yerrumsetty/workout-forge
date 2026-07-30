@@ -8,6 +8,7 @@ type DayBlockProps = {
   day: PlanDay;
   index: number;
   isHard: boolean;
+  hardDayLabel: string;
 };
 
 /**
@@ -16,7 +17,7 @@ type DayBlockProps = {
  * The column spans deliberately differ between odd and even days so the right
  * edge of the page stays ragged rather than settling into a uniform grid.
  */
-export function DayBlock({ day, index, isHard }: DayBlockProps) {
+export function DayBlock({ day, index, isHard, hardDayLabel }: DayBlockProps) {
   const isRecovery = day.focus.toLowerCase() === 'recovery';
   const ordinal = String(index + 1).padStart(2, '0');
 
@@ -50,7 +51,7 @@ export function DayBlock({ day, index, isHard }: DayBlockProps) {
           >
             {ordinal}
           </span>
-          {isHard ? <Badge variant="hard">Hard</Badge> : null}
+          {isHard ? <Badge variant="hard">{hardDayLabel}</Badge> : null}
           {isRecovery ? <Badge variant="recovery">Recovery</Badge> : null}
         </div>
 
@@ -61,7 +62,9 @@ export function DayBlock({ day, index, isHard }: DayBlockProps) {
           {day.day}
         </h3>
 
-        <p className="mt-[var(--space-tight)] text-[var(--text)]">{day.focus}</p>
+        <p className="mt-[var(--space-tight)] max-w-[34ch] text-[var(--text)]">
+          {day.focus}
+        </p>
 
         {day.type ? (
           <p className="label mt-[var(--space-hair)] text-[var(--text-dim)]">
@@ -69,12 +72,20 @@ export function DayBlock({ day, index, isHard }: DayBlockProps) {
           </p>
         ) : null}
 
-        <dl className="mt-[var(--space-block)]">
-          <dt className="label text-[var(--text-dim)]">Conditioning focus</dt>
-          <dd className="mt-[var(--space-hair)] max-w-[34ch] text-[var(--text)]">
-            {day.conditioningFocus}
-          </dd>
-        </dl>
+        {day.conditioningFocus ? (
+          <dl className="mt-[var(--space-block)]">
+            <dt className="label text-[var(--text-dim)]">Conditioning focus</dt>
+            <dd className="mt-[var(--space-hair)] max-w-[34ch] text-[var(--text)]">
+              {day.conditioningFocus}
+            </dd>
+          </dl>
+        ) : null}
+
+        {day.summary ? (
+          <p className="mt-[var(--space-block)] max-w-[38ch] border-l-[length:var(--rule-thick)] border-[var(--hairline)] pl-4 text-[length:var(--text-micro)] text-[var(--text-dim)]">
+            {day.summary}
+          </p>
+        ) : null}
       </header>
 
       <Reveal

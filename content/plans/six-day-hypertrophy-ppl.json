@@ -1,0 +1,552 @@
+{
+  "slug": "six-day-hypertrophy-ppl",
+  "title": "6-Day Hypertrophy",
+  "subtitle": "PPL ×2",
+  "goal": "Built from your split (Chest/Shoulders → Deadlift/Back → Legs/Arms), run twice weekly. Your five requested lifts are all anchored as primary movements.",
+  "hardDays": ["Monday", "Tuesday"],
+  "hardDayLabel": "Heavy",
+  "weeklyStructure": [
+    {
+      "day": "Monday",
+      "cells": [
+        { "label": "Session", "value": "Push A (heavy)" },
+        { "label": "Anchor lift", "value": "Bench Press" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "cells": [
+        { "label": "Session", "value": "Pull A (heavy)" },
+        { "label": "Anchor lift", "value": "Deadlift + Barbell Row" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "cells": [
+        { "label": "Session", "value": "Legs A (quad)" },
+        { "label": "Anchor lift", "value": "Squat" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "cells": [
+        { "label": "Session", "value": "Push B (volume)" },
+        { "label": "Anchor lift", "value": "Incline Bench + Barbell OHP ¹" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "cells": [
+        { "label": "Session", "value": "Pull B (volume)" },
+        { "label": "Anchor lift", "value": "T-Bar Row" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "cells": [
+        { "label": "Session", "value": "Legs B (hamstring/glute)" },
+        { "label": "Anchor lift", "value": "RDL" }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "cells": [
+        { "label": "Session", "value": "Full rest" },
+        { "label": "Anchor lift", "value": "—" }
+      ]
+    }
+  ],
+  "scheduleNotes": [
+    "¹ OHP appears heavy on Mon and again Thu; see note in Day 4.",
+    "Each muscle gets 72 h between sessions — Mon/Thu, Tue/Fri, Wed/Sat. That spacing is deliberate, not incidental."
+  ],
+  "programmingRules": [
+    "Assumptions I made (correct me if wrong): 1+ year of consistent training, competent technique on bench/deadlift/row, 7–9 h sleep, eating at maintenance or above. If any of those are false, this is the wrong plan — see \"When to not run this\" at the bottom."
+  ],
+  "days": [
+    {
+      "day": "Monday",
+      "focus": "Push A — Chest, Delts, Triceps",
+      "type": "Heavy",
+      "conditioningFocus": null,
+      "summary": "19 sets · ~65 min. Bench goes first every week — it's your priority lift and it gets your best CNS.",
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "prescription": "4 × 5–8",
+              "metrics": [
+                { "label": "RIR", "value": "2 → 1 on last" },
+                { "label": "Rest", "value": "3 min" }
+              ]
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "prescription": "3 × 6–8",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "3 min" }
+              ]
+            },
+            {
+              "name": "Incline DB Press (30°)",
+              "prescription": "3 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "1–2" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "prescription": "4 × 12–20",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Overhead Cable/EZ Triceps Extension",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Low-to-High Cable Fly",
+              "prescription": "2 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "focus": "Pull A — Back, Rear Delts, Biceps",
+      "type": "Heavy",
+      "conditioningFocus": null,
+      "summary": "23 sets · ~75 min. Deadlift is capped at 3 sets on purpose — see the honest assessment below.",
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Conventional Deadlift",
+              "prescription": "3 × 4–6",
+              "metrics": [
+                { "label": "RIR", "value": "2–3 — never to failure" },
+                { "label": "Rest", "value": "3–4 min" }
+              ]
+            },
+            {
+              "name": "Barbell Bent-Over Row",
+              "prescription": "4 × 6–10",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "2–3 min" }
+              ]
+            },
+            {
+              "name": "Weighted Pull-up or Lat Pulldown",
+              "prescription": "3 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "1–2" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Chest-Supported / Seal Row",
+              "prescription": "3 × 10–12",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Reverse Pec Deck",
+              "prescription": "3 × 15–20",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "EZ-Bar Curl",
+              "prescription": "4 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Cable Lateral Raise (delt insurance)",
+              "prescription": "3 × 15–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Legs A — Quad-dominant",
+      "type": null,
+      "conditioningFocus": null,
+      "summary": "Zero RDLs here — that's intentional. You deadlifted yesterday; your erectors and hamstrings are not ready. If squats feel wrecked on Wednesday, swap to hack squat or leg press. That's a feature, not a compromise.",
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Back Squat or Hack Squat",
+              "prescription": "4 × 6–10",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "3 min" }
+              ]
+            },
+            {
+              "name": "Leg Press (deep, controlled)",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Seated Leg Curl",
+              "prescription": "4 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1 → 0" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "prescription": "2 × 10–12/leg",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Standing Calf Raise (2 s pause at bottom)",
+              "prescription": "4 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Hanging Leg Raise",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "Arm finisher (optional): Pushdown 2 × 15 + Incline Curl 2 × 12",
+              "prescription": "—",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "focus": "Push B — Chest, Delts, Triceps",
+      "type": "Volume",
+      "conditioningFocus": null,
+      "summary": "21 sets · ~70 min. Every 6 weeks, swap: put standing barbell OHP first on this day and demote incline bench. Otherwise your press stalls permanently behind your bench.",
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Incline Barbell Bench (30°)",
+              "prescription": "4 × 6–10",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "2–3 min" }
+              ]
+            },
+            {
+              "name": "Seated DB or Machine Shoulder Press",
+              "prescription": "3 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "1–2" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Flat DB Press or Machine Chest Press",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Pec Deck / Deep Cable Fly",
+              "prescription": "3 × 12–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "DB or Machine Lateral Raise (last set = drop set)",
+              "prescription": "4 × 12–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60–90 s" }
+              ]
+            },
+            {
+              "name": "Cable Triceps Pushdown",
+              "prescription": "4 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Pull B — Back, Rear Delts, Biceps",
+      "type": "Volume",
+      "conditioningFocus": null,
+      "summary": "24 sets · ~75 min. Chest-supported T-bar specifically — not the free-standing version. Your erectors need to be intact for tomorrow's RDLs. No deadlift on this day, same reason.",
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Chest-Supported T-Bar Row",
+              "prescription": "4 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "2–3 min" }
+              ]
+            },
+            {
+              "name": "Wide-Grip Lat Pulldown",
+              "prescription": "4 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "2 min" }
+              ]
+            },
+            {
+              "name": "Seated Cable Row (neutral grip)",
+              "prescription": "3 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Straight-Arm Pulldown",
+              "prescription": "2 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "Cable Rear Delt Fly / Face Pull",
+              "prescription": "3 × 15–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "Incline DB Curl",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Hammer Curl",
+              "prescription": "2 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "prescription": "3 × 15–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Legs B — Hamstring/Glute-dominant",
+      "type": null,
+      "conditioningFocus": null,
+      "summary": null,
+      "sections": [
+        {
+          "label": null,
+          "exercises": [
+            {
+              "name": "Romanian Deadlift",
+              "prescription": "4 × 8–12",
+              "metrics": [
+                { "label": "RIR", "value": "2" },
+                { "label": "Rest", "value": "2–3 min" }
+              ]
+            },
+            {
+              "name": "Hack Squat or Pendulum Squat",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "2–3 min" }
+              ]
+            },
+            {
+              "name": "Lying Leg Curl",
+              "prescription": "3 × 12–15",
+              "metrics": [
+                { "label": "RIR", "value": "0–1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Leg Extension (last set = drop)",
+              "prescription": "3 × 12–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Hip Thrust or 45° Back Extension",
+              "prescription": "3 × 10–15",
+              "metrics": [
+                { "label": "RIR", "value": "1" },
+                { "label": "Rest", "value": "90 s" }
+              ]
+            },
+            {
+              "name": "Seated Calf Raise",
+              "prescription": "4 × 12–20",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            },
+            {
+              "name": "Arm finisher (optional): OH Extension 2 × 12 + Hammer Curl 2 × 15",
+              "prescription": "—",
+              "metrics": [
+                { "label": "RIR", "value": "0" },
+                { "label": "Rest", "value": "60 s" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "volumeTargets": [
+    { "muscleGroup": "Chest", "weeklySets": "19", "note": "Upper end of productive" },
+    { "muscleGroup": "Back / lats", "weeklySets": "26", "note": "Highest-cost block — first thing to trim" },
+    { "muscleGroup": "Side delts", "weeklySets": "14", "note": "Good (compounds barely hit these)" },
+    { "muscleGroup": "Rear delts", "weeklySets": "6", "note": "Adequate" },
+    { "muscleGroup": "Front delts", "weeklySets": "6 direct + all pressing", "note": "Plenty" },
+    { "muscleGroup": "Quads", "weeklySets": "15", "note": "Solid" },
+    { "muscleGroup": "Hamstrings", "weeklySets": "11", "note": "Solid" },
+    { "muscleGroup": "Triceps", "weeklySets": "7 (11 with finishers)", "note": "Add finishers if arms are a priority" },
+    { "muscleGroup": "Biceps", "weeklySets": "9 (13 with finishers)", "note": "Same" },
+    { "muscleGroup": "Calves", "weeklySets": "8", "note": "Bump to 12 if they're a weak point" },
+    { "muscleGroup": "Abs", "weeklySets": "3", "note": "Minimum viable" }
+  ],
+  "varietyFramework": null,
+  "progressionRules": [
+    "Double progression. Hit the top of the rep range on every set at the prescribed RIR → add 2.5–5% next session. Not before.",
+    "Log every set: load × reps × RIR. If a lift fails to beat the prior session on load or reps for two consecutive sessions, that lift has stalled — deload it or swap the variation."
+  ],
+  "extraSections": [
+    {
+      "title": "Mesocycle structure",
+      "ordered": false,
+      "items": [
+        "Wks 1–2: Start at the RIR shown, bottom of set ranges",
+        "Wks 3–5: Push toward 1–2 RIR, add 1–2 sets to lagging muscles if recovery allows",
+        "Wk 6: Deload. Halve the sets, keep ~85% of the load, 4–5 RIR",
+        "Repeat, rotating 2–3 accessory movements"
+      ]
+    },
+    {
+      "title": "Execution rules",
+      "ordered": true,
+      "items": [
+        "Full ROM with a hard emphasis on the stretched position. Control the eccentric (~2 s), pause briefly at length. Don't bounce.",
+        "Rest longer than feels necessary. 2–3 min on compounds. Short rest costs you reps, and reps are the currency.",
+        "1–2 RIR on almost everything. Save true failure for the last set of single-joint machine work.",
+        "Never deadlift to failure. Ever. Form degrades before the muscle does.",
+        "If a session runs past 75 minutes, cut the last isolation exercise. Don't extend."
+      ]
+    },
+    {
+      "title": "Support",
+      "ordered": false,
+      "items": [
+        "Protein: 1.6–2.2 g/kg bodyweight daily",
+        "Calories: +200–400 over maintenance. Target 0.25–0.5% bodyweight gain/week. Faster is fat.",
+        "Carbs: 4–6 g/kg — 6 sessions/week is glycogen-expensive",
+        "Sleep: 7–9 h. This is the load-bearing variable, not the program."
+      ]
+    },
+    {
+      "title": "When to NOT run this",
+      "ordered": false,
+      "items": [
+        "Drop to 4 days (Upper/Lower ×2) if any of these are true:",
+        "Sleeping under 7 hours regularly",
+        "In a calorie deficit",
+        "Under 1 year of serious training",
+        "Physically demanding job or high life stress",
+        "Joint pain that persists past warm-up",
+        "Running this plan on 6 h of sleep in a deficit will produce worse results than a well-executed 4-day plan. That's not motivational hedging — it's the actual expected outcome."
+      ]
+    },
+    {
+      "title": "Schedule alternative",
+      "ordered": false,
+      "items": [
+        "6 consecutive days with one rest day is aggressive. If you find yourself dragging by Friday, switch to a rolling 3-on / 1-off rotation (Push, Pull, Legs, Rest — repeat). Same sessions, ~8 days per cycle instead of 7, meaningfully better recovery. It stops mapping to calendar weekdays, which is the only real downside."
+      ]
+    }
+  ],
+  "intent": null
+}

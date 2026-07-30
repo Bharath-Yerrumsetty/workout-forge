@@ -1,5 +1,8 @@
 import {
   StaggerDefinitionList,
+  StaggerItem,
+  StaggerList,
+  StaggerOrderedList,
   StaggerPair,
 } from '@/components/motion/reveal';
 import {
@@ -11,13 +14,19 @@ import {
   TableRow,
   TableRowHeader,
 } from '@/components/ui/table';
-import type { VarietyPattern, VolumeTarget } from '@/lib/plan-schema';
+import type {
+  ExtraSection,
+  VarietyPattern,
+  VolumeTarget,
+} from '@/lib/plan-schema';
 
 export function VolumeTargets({
   targets,
 }: {
   targets: readonly VolumeTarget[];
 }) {
+  const hasNotes = targets.some((target) => target.note !== null);
+
   return (
     <Table aria-labelledby="volume-targets" className="min-w-[22rem]">
       <TableHeader>
@@ -26,6 +35,7 @@ export function VolumeTargets({
           <TableHead scope="col" className="text-right">
             Direct weekly sets
           </TableHead>
+          {hasNotes ? <TableHead scope="col">Assessment</TableHead> : null}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -35,6 +45,11 @@ export function VolumeTargets({
             <TableCell className="text-right tabular-nums text-[var(--text-dim)]">
               {target.weeklySets}
             </TableCell>
+            {hasNotes ? (
+              <TableCell className="text-[var(--text-dim)]">
+                {target.note ?? ''}
+              </TableCell>
+            ) : null}
           </TableRow>
         ))}
       </TableBody>
@@ -61,5 +76,29 @@ export function VarietyFramework({
         </StaggerPair>
       ))}
     </StaggerDefinitionList>
+  );
+}
+
+const itemClass =
+  'border-b-[length:var(--rule-thin)] border-[var(--hairline)] py-[var(--space-row)]';
+
+/**
+ * A whole document section carried through verbatim. Ordered sources render as
+ * `ol` so assistive tech announces position natively.
+ */
+export function ExtraSectionList({ section }: { section: ExtraSection }) {
+  const items = section.items.map((item) => (
+    <StaggerItem key={item} className={itemClass}>
+      <span className="block max-w-[var(--measure)]">{item}</span>
+    </StaggerItem>
+  ));
+
+  const className =
+    'border-t-[length:var(--rule-thin)] border-[var(--hairline)]';
+
+  return section.ordered ? (
+    <StaggerOrderedList className={className}>{items}</StaggerOrderedList>
+  ) : (
+    <StaggerList className={className}>{items}</StaggerList>
   );
 }
