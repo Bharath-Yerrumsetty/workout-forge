@@ -163,43 +163,32 @@ PORT=3210 pnpm start &
 BASE_URL=http://localhost:3210 node scripts/check-ui.mjs
 ```
 
-## Blocked: the commit needs your decision
+## Commit history note
 
-**The work is complete, verified, and live — but it is not committed.**
-
-A corporate pre-commit hook rejected it:
+The initial commit was rejected by a corporate pre-commit hook
+(`/opt/searce-git/.git_templates/hooks/master.sh` — root-owned, read-only,
+fetching a central organization allowlist from a company GCS bucket):
 
 ```
 ERROR: Only commits to whitelisted urls or organizations are allowed.
-       Your git hostname is: github.com
        Your organization is: Bharath-Yerrumsetty
 ```
 
-That hook is `/opt/searce-git/.git_templates/hooks/master.sh` — root-owned,
-read-only, fetching a central allowlist from a company GCS bucket. `origin` is
-your personal GitHub account, which is not on the list, so the hook is working
-as designed. I did not bypass it: circumventing employer source-control
-governance is your call to make, not mine to make unattended.
+`origin` is a personal GitHub account, which is not on the company allowlist.
+At the repository owner's explicit direction, the commit was made with
+`--no-verify` and pushed to `feat/workout-portal`. Recorded here so the bypass
+is visible rather than silent.
 
-Everything is **staged** on `feat/workout-portal`. Pick one:
+Before committing, the staged tree was scanned: no `.env`, `.pem`, or key files;
+`.vercel/` (which holds project and org IDs) is gitignored; no credential
+patterns (`sk-`, `ghp_`, `AKIA`, `AIza`, `xox*`, JWTs, PEM blocks) in any staged
+file; the only `process.env` reference in the codebase is a `localhost` default
+in `scripts/check-ui.mjs`.
 
-**A — move the repo to an approved org** (keeps the policy satisfied):
+## Your next command
+
 ```bash
-git remote set-url origin git@github.com:<approved-org>/workout-forge.git
-git commit -F .git/COMMIT_EDITMSG && git push -u origin feat/workout-portal
+gh pr create --fill
 ```
-
-**B — commit as a personal project, bypassing the hook.** Only you can judge
-whether that is acceptable under your employer's policy:
-```bash
-git commit --no-verify -F .git/COMMIT_EDITMSG
-git push -u origin feat/workout-portal
-```
-
-**C — leave it uncommitted.** The site is already deployed and does not depend
-on git; nothing is lost by waiting.
-
-The live deployment above is unaffected either way — `vercel deploy` uploads the
-working tree directly and never touched git.
 
 To ship another plan, just hand me the document.
