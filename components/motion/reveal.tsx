@@ -88,7 +88,10 @@ export function StaggerList({ children, className }: RevealProps) {
   const state = useRevealState(ref);
 
   return (
+    // `role="list"` restores the semantics that `list-style: none` strips in
+    // Safari/VoiceOver — without it these announce as plain text, not a list.
     <m.ul
+      role="list"
       ref={ref}
       className={className}
       variants={listVariants}
@@ -107,6 +110,7 @@ export function StaggerOrderedList({ children, className }: RevealProps) {
 
   return (
     <m.ol
+      role="list"
       ref={ref}
       className={className}
       variants={listVariants}

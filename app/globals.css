@@ -26,6 +26,10 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    /* Every #day fragment jump lands clear of the sticky header. This is the
+     * scroll-container-level guarantee; scroll-mt on the target is the
+     * element-level backup. */
+    scroll-padding-top: calc(var(--header-h) + var(--space-block));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -42,7 +46,13 @@
     font-size: var(--text-body);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    /*
+     * `clip`, not `hidden`. `overflow-x: hidden` computes overflow-y to auto,
+     * which turns body into a scroll container and silently breaks the sticky
+     * header — it would stick to body rather than the viewport. `clip` cuts
+     * the same overflow without creating that container.
+     */
+    overflow-x: clip;
   }
 
   h1,
@@ -94,6 +104,43 @@
     font-size: var(--text-section);
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
+  }
+
+  /*
+   * Static atmosphere over the slab layer: film grain plus a faint structural
+   * grid. Both are painted once and never animate, so they cost nothing on
+   * scroll and are identical under reduced motion.
+   */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.055;
+  }
+
+  .grid-rule {
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        var(--hairline) 0,
+        var(--hairline) 1px,
+        transparent 1px,
+        transparent 12.5%
+      );
+    opacity: 0.5;
+  }
+
+  /*
+   * Hover wipe. Uses clip-path rather than a scaleX transform so the resting
+   * state carries no transform at all — which keeps the reduced-motion audit
+   * (which counts any non-identity transform) honest and passing.
+   */
+  .wipe {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .group:hover .wipe,
+  .group:focus-visible .wipe {
+    clip-path: inset(0 0 0 0);
   }
 
   /* Diagonal slab used behind recovery / de-load blocks. */

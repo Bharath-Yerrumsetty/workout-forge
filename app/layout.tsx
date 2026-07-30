@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { Anton, IBM_Plex_Mono } from 'next/font/google';
-import Link from 'next/link';
 
 import { MotionRoot } from '@/components/motion/motion-root';
+import { SlabField } from '@/components/motion/slab-field';
+import { SiteHeader } from '@/components/nav/site-header';
+import { plans } from '@/lib/plans';
 
 import './globals.css';
 
@@ -41,30 +43,34 @@ export default function RootLayout({
       <body>
         <a
           href="#main"
-          className="label sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-[var(--accent)] focus:px-4 focus:py-3 focus:text-[var(--text)]"
+          className="label sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:bg-[var(--accent)] focus:px-4 focus:py-3 focus:text-[var(--text)]"
+          style={{ zIndex: 'var(--z-skip)' }}
         >
           Skip to content
         </a>
 
         <MotionRoot>
-          <header className="gutter border-b-[length:var(--rule-thin)] border-[var(--hairline)] py-[var(--space-block)]">
-            <nav aria-label="Main">
-              <Link
-                href="/"
-                className="label inline-block transition-colors duration-[var(--duration-fast)] hover:text-[var(--accent-text)]"
-              >
-                Workout&nbsp;Forge
-              </Link>
-            </nav>
-          </header>
+          <SlabField />
 
-          <main id="main">{children}</main>
+          {/* Establishes the stacking context that lifts every readable
+              surface above the decorative slab layer. */}
+          <div className="relative" style={{ zIndex: 'var(--z-content)' }}>
+            <SiteHeader
+              plans={plans.map(({ slug, title }) => ({ slug, title }))}
+            />
 
-          <footer className="gutter border-t-[length:var(--rule-thin)] border-[var(--hairline)] py-[var(--space-block)]">
-            <p className="label text-[var(--text-dim)]">
-              Plans ingested from source documents · rendered statically
-            </p>
-          </footer>
+            {/* tabIndex makes the skip link actually move focus, not just
+                scroll the viewport. */}
+            <main id="main" tabIndex={-1}>
+              {children}
+            </main>
+
+            <footer className="gutter border-t-[length:var(--rule-thin)] border-[var(--hairline)] bg-[var(--bg)] py-[var(--space-block)]">
+              <p className="label text-[var(--text-dim)]">
+                Plans ingested from source documents · rendered statically
+              </p>
+            </footer>
+          </div>
         </MotionRoot>
       </body>
     </html>

@@ -24,6 +24,18 @@ const PAIRS = [
   ['--text', '--accent-deep', 4.5, 'text on deep crimson block'],
   ['--accent', '--bg', 3.0, 'crimson slab / rule (non-text)'],
   ['--hairline', '--bg', 1.0, 'hairline rule (decorative)'],
+
+  /*
+   * The background slab layer drifts underneath live copy, so every ink
+   * colour must clear AA against it — including --accent-text, which is the
+   * binding constraint at 4.59:1 and the reason --slab is darker than
+   * --accent-deep. These are token pairs only; scripts/check-ui.mjs samples
+   * the actually-rendered pixels, which is what catches compositing.
+   */
+  ['--text', '--slab', 4.5, 'body text over background slab'],
+  ['--text-dim', '--slab', 4.5, 'secondary text over background slab'],
+  ['--accent-text', '--slab', 4.5, 'crimson text over background slab'],
+  ['--accent-text', '--surface', 4.5, 'crimson text over surface slab'],
 ];
 
 function readTokens() {

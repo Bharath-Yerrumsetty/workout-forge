@@ -24,6 +24,14 @@
   --accent-text: #f43f3f; /* crimson type, passes 4.5:1 on --bg */
   --accent-deep: #4a0d0d; /* heavy blocks behind bone text */
 
+  /*
+   * Background slab tone. Deliberately darker than --accent-deep: the slab
+   * layer drifts underneath live text, so every ink colour — including
+   * --accent-text, the tightest at 4.59:1 — must still clear 4.5:1 on it.
+   * --accent-deep measures 4.16:1 against --accent-text and would fail.
+   */
+  --slab: #3a0a0a;
+
   /* ---- type ------------------------------------------------------- */
   --font-display: var(--font-anton), 'Arial Narrow', sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
@@ -52,6 +60,16 @@
 
   --gutter: clamp(1.125rem, 0.5rem + 3vw, 5rem);
   --measure: 62ch;
+
+  /* Sticky header height. Anchor scroll offsets resolve through this, so a
+   * change here can never leave a day heading hidden under the bar. */
+  --header-h: 3.25rem;
+
+  /* ---- layers ------------------------------------------------------ */
+  --z-slabs: 0;
+  --z-content: 10;
+  --z-header: 40;
+  --z-skip: 60;
 
   /* ---- motion ----------------------------------------------------- */
   --duration-fast: 140ms;

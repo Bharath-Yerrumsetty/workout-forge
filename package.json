@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:ingest": "node scripts/check-ingest.mjs",
+    "check:ui": "node scripts/check-ui.mjs",
     "verify": "pnpm typecheck && pnpm lint && pnpm check:contrast && pnpm check:ingest && pnpm build"
   },
   "dependencies": {

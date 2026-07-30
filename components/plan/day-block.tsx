@@ -28,7 +28,9 @@ export function DayBlock({ day, index, isHard, hardDayLabel }: DayBlockProps) {
       tabIndex={-1}
       aria-labelledby={`day-${day.day.toLowerCase()}`}
       className={cn(
-        'relative scroll-mt-24 border-t-[length:var(--rule-thick)] border-[var(--text)] pt-[var(--space-block)]',
+        // Offset resolves through --header-h, so the sticky bar can never
+        // cover a day heading arrived at via a #fragment link.
+        'relative scroll-mt-[calc(var(--header-h)+var(--space-block))] border-t-[length:var(--rule-thick)] border-[var(--text)] pt-[var(--space-block)]',
         'md:grid md:grid-cols-12 md:gap-x-8',
         isRecovery && 'hatch',
       )}
