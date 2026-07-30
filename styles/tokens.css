@@ -1,0 +1,74 @@
+/*
+ * Blood brutalist token system.
+ * Every colour, scale step, and duration in the app resolves through here.
+ * No hardcoded hex values are permitted outside this file.
+ *
+ * Contrast contract (verified by scripts/check-contrast.mjs):
+ *   --accent is a FILL colour. It does not meet 4.5:1 on --bg and must never
+ *   be used for body text. Use --accent-text for any crimson type.
+ */
+
+:root {
+  /* ---- surface ---------------------------------------------------- */
+  --bg: #0a0709;
+  --surface: #161012;
+  --surface-raised: #1e1518;
+  --hairline: #2a2023;
+
+  /* ---- ink -------------------------------------------------------- */
+  --text: #f2ede9;
+  --text-dim: #9e9490;
+
+  /* ---- crimson ---------------------------------------------------- */
+  --accent: #c41e1e; /* fills, rules, blocks — NOT text */
+  --accent-text: #f43f3f; /* crimson type, passes 4.5:1 on --bg */
+  --accent-deep: #4a0d0d; /* heavy blocks behind bone text */
+
+  /* ---- type ------------------------------------------------------- */
+  --font-display: var(--font-anton), 'Arial Narrow', sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --text-display: clamp(3.5rem, 1rem + 13vw, 12rem);
+  --text-plan-title: clamp(2.5rem, 1rem + 7vw, 6.5rem);
+  --text-day: clamp(2rem, 1rem + 4.5vw, 4.25rem);
+  --text-section: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --text-body: clamp(0.875rem, 0.84rem + 0.16vw, 1rem);
+  --text-micro: 0.6875rem;
+
+  --tracking-brutal: -0.03em;
+  --tracking-label: 0.22em;
+
+  /* ---- rhythm (deliberately uneven, not a uniform scale) ---------- */
+  --space-hair: 0.25rem;
+  --space-tight: 0.5rem;
+  --space-row: 0.875rem;
+  --space-block: 2rem;
+  --space-day: clamp(4rem, 2rem + 6vw, 9rem);
+  --space-section: clamp(5rem, 2rem + 9vw, 13rem);
+
+  --rule-thin: 1px;
+  --rule-thick: 4px;
+  --rule-slab: 12px;
+
+  --gutter: clamp(1.125rem, 0.5rem + 3vw, 5rem);
+  --measure: 62ch;
+
+  /* ---- motion ----------------------------------------------------- */
+  --duration-fast: 140ms;
+  --duration-normal: 420ms;
+  --duration-slow: 720ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-brutal: cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+/*
+ * Brutalism is a visual stance, not a motion stance. When the OS asks for
+ * reduced motion every transition collapses to nothing.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-normal: 1ms;
+    --duration-slow: 1ms;
+  }
+}

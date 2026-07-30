@@ -1,0 +1,6 @@
+# pnpm 11 reads build-script approvals from here rather than package.json.
+# Both packages ship legitimate native build steps: sharp powers Next's image
+# optimisation, unrs-resolver backs the ESLint import resolver.
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
